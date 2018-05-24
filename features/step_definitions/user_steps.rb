@@ -13,14 +13,36 @@ Given("the user is at Test RP") do
   visit(env('test-rp'))
 end
 
+Given("we do not want to match the user") do
+  check('no-match')
+end
+
+Given("we want to fail account creation") do
+  check('fail-account-creation')
+end
+
+Given("we set the RP name to {string}") do |name|
+  fill_in('rp-name', with: name)
+end
+
+Given("they start a sign in journey") do
+  click_on('Start')
+  choose('start_form_selection_false')
+  click_on('Continue')
+end
+
 Given("they start a registration journey") do
   click_on('Start')
 
-  choose('This is my first time using Verify')
+  choose('start_form_selection_true')
   click_on('Continue')
   click_on('Next')
   click_on('Next')
   click_on('Start now')
+  click_on('Continue')
+
+  choose('will_it_work_for_me_form_above_age_threshold_true')
+  choose('will_it_work_for_me_form_resident_last_12_months_true')
   click_on('Continue')
 end
 
@@ -44,33 +66,45 @@ Given("they login as {string}") do |username|
   click_on('I Agree')
 end
 
+Given("they login as {string} with a random pid") do |username|
+  fill_in('username', with: username)
+  fill_in('password', with: 'bar')
+  click_on('SignIn')
+  assert_text("You've successfully authenticated")
+  page.execute_script('document.getElementById("randomPid").value = "true"')
+  click_on('I Agree')
+end
+
 Given("they submit cycle 3 {string}") do |string|
   fill_in('cycle_three_attribute[cycle_three_data]', with: string)
   click_on('Continue')
 end
 
-Given("we do not want to match the user") do
-  check('no-match')
-end
-
 Given("they have all their documents") do
-  choose('will_it_work_for_me_form_above_age_threshold_true')
-  choose('will_it_work_for_me_form_resident_last_12_months_true')
-  click_on('Continue')
-
   choose('select_documents_form_any_driving_licence_true')
   choose('Great Britain')
   choose('select_documents_form_passport_true')
   click_on('Continue')
+end
 
+Given("they have a smart phone") do
   choose('select_phone_form_mobile_phone_true')
   choose('select_phone_form_smart_phone_true')
+  click_on('Continue')
+end
+
+Given("they do not have a phone") do
+  choose('select_phone_form_mobile_phone_false')
   click_on('Continue')
 end
 
 Given("they register with {string}") do |idp|
   click_on("Choose #{idp}")
   click_on("Continue to the #{idp} website")
+end
+
+Given("they select IDP {string}") do |idp|
+  click_on("Select #{idp}", match: :first)
 end
 
 Given("they enter user details:") do |details|
@@ -102,4 +136,8 @@ Then("a user should have been created with details:") do |details|
   details.rows_hash.each do |k, v|
     assert_text("#{k}:#{v}")
   end
+end
+
+Then("user account creation should fail") do
+  assert_text("Sorry, something went wrong")
 end

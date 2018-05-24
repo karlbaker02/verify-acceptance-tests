@@ -2,5 +2,5 @@
 
 set -eu
 
-bundle
+bundle --quiet
 bundle exec cucumber
