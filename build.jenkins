@@ -1,0 +1,28 @@
+pipeline {
+
+    agent none
+
+    parameters {
+        string(name: 'Environment', defaultValue: 'joint', description: 'Verify environment under test')
+    }
+
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 20, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '1'))
+    }
+
+    stages {
+        stage('Test') {
+            agent {
+              docker {
+                image 'selenium/standalone-firefox:3.12.0-americium'
+              }
+            }
+            steps {
+                sh "TEST_ENV=${params.Environment} ./pre-commit.sh"
+            }
+        }
+    }
+}
+
