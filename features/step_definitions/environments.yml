@@ -2,7 +2,7 @@ local:
   frontend: http://localhost:50300
   test-rp: http://localhost:50130/test-rp
   idps:
-    Stub Country: https://localhost:50140/eidas/stub-country/login
+    Stub Country: http://localhost:50140/eidas/stub-country/login
 
 joint:
   frontend: https://www.joint.signin.service.gov.uk
