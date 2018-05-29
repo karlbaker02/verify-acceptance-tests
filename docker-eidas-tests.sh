@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+set -eu
 
 docker-compose up -d selenium-hub
 docker-compose build verify-acceptance-tester
