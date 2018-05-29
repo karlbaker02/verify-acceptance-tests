@@ -9,6 +9,10 @@ def env(key)
   ENVIRONMENTS.dig(TEST_ENV, key)
 end
 
+def eidas_enabled?
+  @eidasEnabled.nil? ? true : @eidasEnabled
+end
+
 Given("the user is at Test RP") do
   visit(env('test-rp'))
 end
@@ -23,10 +27,12 @@ end
 
 Given("we set the RP name to {string}") do |name|
   fill_in('rp-name', with: name)
+  @eidasEnabled = (name != 'test-rp-noc3')
 end
 
 Given("they start a sign in journey") do
   click_on('Start')
+  click_on('Use GOV.UK Verify') if eidas_enabled?
   choose('start_form_selection_false')
   click_on('Continue')
 end
@@ -34,6 +40,7 @@ end
 Given("they start a registration journey") do
   click_on('Start')
 
+  click_on('Use GOV.UK Verify') if eidas_enabled?
   choose('start_form_selection_true')
   click_on('Continue')
   click_on('Next')
