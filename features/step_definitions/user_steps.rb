@@ -30,6 +30,10 @@ Given("we set the RP name to {string}") do |name|
   @eidasEnabled = (name != 'test-rp-noc3')
 end
 
+Given("they start a journey") do
+  click_on('Start')
+end
+
 Given("they start a sign in journey") do
   click_on('Start')
   click_on('Use GOV.UK Verify') if eidas_enabled?
@@ -55,6 +59,14 @@ end
 
 Given("they start an eIDAS journey") do
   click_on('Start with your European eID')
+end
+
+When("they choose to use Verify") do
+  click_on('Use GOV.UK Verify')
+end
+
+When("they choose to use a European identity scheme") do
+  click_on("Select your European scheme")
 end
 
 Given("they select country {string}") do |string|
@@ -147,4 +159,12 @@ end
 
 Then("user account creation should fail") do
   assert_text("Sorry, something went wrong")
+end
+
+Then('they arrive at the Start page') do
+  assert_text('Sign in with GOV.UK Verify')
+end
+
+Then('they arrive at the country picker') do
+  assert_text('Which EU country is your eID from?')
 end
