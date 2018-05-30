@@ -66,7 +66,7 @@ When("they choose to use Verify") do
 end
 
 When("they choose to use a European identity scheme") do
-  click_on("Select your European scheme")
+  click_on("Select your European digital identity")
 end
 
 Given("they select country {string}") do |string|
