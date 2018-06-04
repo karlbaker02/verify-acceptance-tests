@@ -21,6 +21,6 @@ Feature: Page to pick between Verify and eIDAS journies
   @javascript
   Scenario: RP without eIDAS enabled doesn't trigger picker
     Given the user is at Test RP
-    And we set the RP name to "test-rp-noc3"
+    And we set the RP name to "test-rp-non-eidas"
     When they start a journey
     Then they arrive at the Start page

@@ -3,4 +3,4 @@
 set -eu
 
 bundle --quiet
-bundle exec cucumber
+SHOW_BROWSER=true TEST_ENV=local bundle exec cucumber

@@ -58,7 +58,8 @@ Given("they start a registration journey") do
 end
 
 Given("they start an eIDAS journey") do
-  click_on('Start with your European eID')
+  click_on('Start')
+  click_on('Select your European digital identity')
 end
 
 When("they choose to use Verify") do
