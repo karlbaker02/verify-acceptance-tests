@@ -1,7 +1,10 @@
 FROM ruby:2.4.2
 
-ADD Gemfile Gemfile
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
 
 RUN bundle install
+
+COPY features /features
 
 ENTRYPOINT ["bundle", "exec", "cucumber"]

@@ -6,15 +6,21 @@ Hopefully, they'll be more maintainable than what we have now.
 
 ## Running
 
-Run the acceptance tests with:
+Running against joint:
+```
+./run-tests-with-docker.sh [features-to-run]
+```
 
-    ./pre-commit.sh
+Running locally:
+```
+./pre-commit.sh
+```
 
 To run them for a different test environment, export the `TEST_ENV` environment variable with one of the following:
 
   * local
+  * docker-local
   * joint
-
 
 ## Configuration
 

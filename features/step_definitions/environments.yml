@@ -4,6 +4,12 @@ local:
   idps:
     Stub Country: http://localhost:50140/eidas/stub-country/login
 
+docker-local:
+  frontend: http://frontend
+  test-rp: http://test-rp/test-rp
+  idps:
+    Stub Country: http://stub-idp/eidas/stub-country/login
+
 joint:
   frontend: https://www.joint.signin.service.gov.uk
   test-rp: https://test-rp-stub-joint.ida.digital.cabinet-office.gov.uk/test-rp

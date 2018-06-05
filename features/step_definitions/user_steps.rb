@@ -27,7 +27,7 @@ end
 
 Given("we set the RP name to {string}") do |name|
   fill_in('rp-name', with: name)
-  @eidasEnabled = (name != 'test-rp-noc3')
+  @eidasEnabled = (name != 'test-rp-non-eidas')
 end
 
 Given("they start a journey") do
