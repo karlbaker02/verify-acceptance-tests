@@ -75,6 +75,12 @@ Given("they select country {string}") do |string|
   click_on('Select')
 end
 
+Given("they register with country {string}") do |string|
+  select(string, from: 'country')
+  click_on('Select')
+  click_on('Register')
+end
+
 Given("they go back to the country picker") do
   visit(URI.join(env('frontend'), 'choose-a-country'))
 end
@@ -138,6 +144,18 @@ Given("they enter user details:") do |details|
   click_on('I Agree')
 
   click_on('Continue')
+end
+
+Given("they enter eidas user details:") do |details|
+  details.rows_hash.each do |input, value|
+    fill_in(input, with: value)
+  end
+
+  fill_in('username', with: SecureRandom.hex)
+  fill_in('password', with: 'bar')
+  click_on('Register')
+  click_on('I Agree')
+
 end
 
 Then("they should be at IDP {string}") do |idp|

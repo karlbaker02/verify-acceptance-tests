@@ -24,9 +24,25 @@ Feature: eIDAS user journeys
     Given the user is at Test RP
     And they start an eIDAS journey
     And they select country "Stub Country"
-    And they login as "stub-country-c3"
+    And they login as "stub-country-ec3"
     And they submit cycle 3 "AA123456A"
     Then they should be successfully verified
+
+  @javascript
+  Scenario: User registers with stub country, with cycle3 and forces UAC
+    Given the user is at Test RP
+    And we do not want to match the user
+    And they start an eIDAS journey
+    And they register with country "Stub Country"
+    And they enter eidas user details:
+      | firstname       | Bob        |
+      | surname         | Doe        |
+      | dateOfBirth     | 1987-03-03 |
+    And they submit cycle 3 "AA123456A"
+    Then a user should have been created with details:
+      | firstname   | Bob        |
+      | surname     | Doe        |
+      | dateofbirth | 1987-03-03 |
 
   @javascript
   Scenario: User signs creates a new account
