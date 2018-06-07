@@ -40,3 +40,11 @@ Feature: eIDAS user journeys
       | firstname   | Jack       |
       | surname     | Bauer      |
       | dateofbirth | 1984-02-29 |
+
+  @javascript
+  Scenario: User signs in with a country
+    Given the user is at Test RP
+    And they start an eIDAS journey
+    When they select "Stub IDP Demo"
+    And they login as "stub-country"
+    Then they should be successfully verified
