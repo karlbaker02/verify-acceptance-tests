@@ -165,11 +165,6 @@ Then('they arrive at the country picker') do
   assert_text('Which EU country is your eID from?')
 end
 
-When("they select {string}") do |string|
+When("they select country {string}") do |string|
   click_on("Select " + string)
-end
-
-Given("they select country {string}") do |string|
-  select(string, from: 'country')
-  click_on('Select')
 end
