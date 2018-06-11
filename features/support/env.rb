@@ -5,7 +5,7 @@ Capybara.configure do |cfg|
   cfg.default_max_wait_time = 20
 end
 
-if ENV['TEST_ENV'] == "local"
+if ENV['TEST_ENV'] == "local" || ENV['SHOW_BROWSER']
   Capybara.register_driver :firefox_headless do |app|
     options = ::Selenium::WebDriver::Firefox::Options.new
     options.args << '--headless'
