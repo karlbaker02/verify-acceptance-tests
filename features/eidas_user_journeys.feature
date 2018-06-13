@@ -20,6 +20,22 @@ Feature: eIDAS user journeys
     Then they should be successfully verified
 
   @javascript
+  Scenario: User with accents in name signs in
+    Given the user is at Test RP
+    And they start an eIDAS journey
+    And they select country "Stub Country"
+    And they login as "stub-country-accents"
+    Then they should be successfully verified
+
+  @javascript
+  Scenario: User with non-Latin name signs in
+    Given the user is at Test RP
+    And they start an eIDAS journey
+    And they select country "Stub Country"
+    And they login as "stub-country-nonlatin"
+    Then they should be successfully verified
+
+  @javascript
   Scenario: User signs in with a country and does Cycle 3
     Given the user is at Test RP
     And they start an eIDAS journey
