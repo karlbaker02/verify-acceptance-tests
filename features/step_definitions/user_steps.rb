@@ -76,9 +76,11 @@ Given("they select country {string}") do |string|
   click_on('Select')
 end
 
-Given("they register with country {string}") do |string|
-  select(string, from: 'country')
-  click_on('Select')
+Given("they select eIDAS scheme {string}") do |string|
+  click_on('Select ' + string)
+end
+
+When("they click Register") do
   click_on('Register')
 end
 
@@ -186,5 +188,5 @@ Then('they arrive at the Start page') do
 end
 
 Then('they arrive at the country picker') do
-  assert_text('Which EU country is your eID from?')
+  assert_text('Use a digital identity from another European country')
 end
