@@ -50,7 +50,7 @@ Feature: eIDAS user journeys
     And we do not want to match the user
     And they start an eIDAS journey
     And they select eIDAS scheme "Stub IDP Demo"
-    And they click register
+    And they click Register
     And they enter eidas user details:
       | firstname   | Bob        |
       | surname     | Doe        |

@@ -80,7 +80,7 @@ Given("they select eIDAS scheme {string}") do |string|
   click_on('Select ' + string)
 end
 
-When("they click Register") do
+Given("they click Register") do
   click_on('Register')
 end
 
