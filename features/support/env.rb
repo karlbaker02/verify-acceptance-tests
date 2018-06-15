@@ -25,14 +25,20 @@ end
 
 #Screenshot config
 
+## screenshots saved under test name + date
 Capybara::Screenshot.register_filename_prefix_formatter(:cucumber) do |example|
   puts "Example object: #{example.name}"
   "screenshot_#{example.name.gsub(' ', '-').gsub(/^.*\/spec\//,'')}"
 end
-Capybara::Screenshot.register_driver(:firefox_headless) do |driver, path|
+
+## dynamically register screenshot driver
+Capybara::Screenshot.register_driver(Capybara.javascript_driver) do |driver, path|
   driver.browser.save_screenshot(path)
 end
+
+## default host to assist in rendering
 Capybara.asset_host = 'http://localhost:3000'
+## host directory for screenshot files
 Capybara.save_path = "tmp/capybara"
 # Keep only the screenshots generated from the last failing test suite
 Capybara::Screenshot.prune_strategy = :keep_last_run
