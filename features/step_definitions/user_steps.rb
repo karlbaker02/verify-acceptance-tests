@@ -71,11 +71,6 @@ When("they choose to use a European identity scheme") do
   click_on("Select your European digital identity")
 end
 
-Given("they select country {string}") do |string|
-  select(string, from: 'country')
-  click_on('Select')
-end
-
 Given("they select eIDAS scheme {string}") do |string|
   click_on('Select ' + string)
 end
@@ -132,8 +127,8 @@ Given("they register with {string}") do |idp|
   click_on("Continue to the #{idp} website")
 end
 
-Given("they select IDP {string}") do |idp|
-  click_on("Select #{idp}", match: :first)
+Given("they select Stub IDP Demo") do
+  click_on("Select Stub IDP Demo", match: :first)
 end
 
 Given("they enter user details:") do |details|
