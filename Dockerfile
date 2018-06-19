@@ -7,4 +7,4 @@ RUN bundle install
 
 COPY features /features
 
-ENTRYPOINT ["bundle", "exec", "cucumber"]
+ENTRYPOINT ["bundle", "exec", "cucumber --strict"]
