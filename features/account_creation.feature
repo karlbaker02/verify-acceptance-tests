@@ -2,7 +2,6 @@ Feature: User account creation
 
   This tests user account creation flows.
 
-  @javascript
   Scenario: Registration and cycle 3
     Given the user is at Test RP
     And we do not want to match the user
@@ -24,7 +23,7 @@ Feature: User account creation
       | surname     | Doe        |
       | dateofbirth | 1987-03-03 |
 
-  @javascript
+
   Scenario: Sign in and cycle 3
     Given the user is at Test RP
     And we do not want to match the user
@@ -37,7 +36,7 @@ Feature: User account creation
       | surname     | Bauer      |
       | dateofbirth | 1984-02-29 |
 
-  @javascript
+
   Scenario: Registration without cycle 3
     Given the user is at Test RP
     And we set the RP name to "test-rp-noc3"
@@ -60,7 +59,6 @@ Feature: User account creation
       | dateofbirth | 1987-03-03 |
 
 
-  @javascript
   Scenario: Sign in without cycle 3
     Given the user is at Test RP
     And we set the RP name to "test-rp-noc3"
@@ -74,7 +72,6 @@ Feature: User account creation
       | dateofbirth | 1984-02-29 |
 
 
-  @javascript
   Scenario: Failed user account creation
     Given the user is at Test RP
     And we set the RP name to "test-rp-noc3"

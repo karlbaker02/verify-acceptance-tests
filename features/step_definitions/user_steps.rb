@@ -13,36 +13,36 @@ def see_journey_picker?
   @see_journey_picker
 end
 
-Given("the user is at Test RP") do
+Given('the user is at Test RP') do
   visit(env('test-rp'))
   @see_journey_picker = true
 end
 
-Given("we do not want to match the user") do
+Given('we do not want to match the user') do
   check('no-match')
 end
 
-Given("we want to fail account creation") do
+Given('we want to fail account creation') do
   check('fail-account-creation')
 end
 
-Given("we set the RP name to {string}") do |name|
+Given('we set the RP name to {string}') do |name|
   fill_in('rp-name', with: name)
   @see_journey_picker = false
 end
 
-Given("they start a journey") do
+Given('they start a journey') do
   click_on('Start')
 end
 
-Given("they start a sign in journey") do
+Given('they start a sign in journey') do
   click_on('Start')
   click_on('Use GOV.UK Verify') if see_journey_picker?
   choose('start_form_selection_false')
   click_on('Continue')
 end
 
-Given("they start a registration journey") do
+Given('they start a registration journey') do
   click_on('Start')
 
   click_on('Use GOV.UK Verify') if see_journey_picker?
@@ -58,39 +58,39 @@ Given("they start a registration journey") do
   click_on('Continue')
 end
 
-Given("they start an eIDAS journey") do
+Given('they start an eIDAS journey') do
   click_on('Start')
   click_on('Select your European digital identity')
 end
 
-When("they choose to use Verify") do
+When('they choose to use Verify') do
   click_on('Use GOV.UK Verify')
 end
 
-When("they choose to use a European identity scheme") do
-  click_on("Select your European digital identity")
+When('they choose to use a European identity scheme') do
+  click_on('Select your European digital identity')
 end
 
-Given("they select eIDAS scheme {string}") do |string|
-  click_on('Select ' + string)
+Given('they select eIDAS scheme {string}') do |scheme|
+  click_on('Select ' + scheme)
 end
 
-Given("they click Register") do
+Given('they click Register') do
   click_on('Register')
 end
 
-Given("they go back to the country picker") do
+Given('they go back to the country picker') do
   visit(URI.join(env('frontend'), 'choose-a-country'))
 end
 
-Given("they login as {string}") do |username|
+Given('they login as {string}') do |username|
   fill_in('username', with: username)
   fill_in('password', with: 'bar')
   click_on('SignIn')
   click_on('I Agree')
 end
 
-Given("they login as {string} with a random pid") do |username|
+Given('they login as {string} with a random pid') do |username|
   fill_in('username', with: username)
   fill_in('password', with: 'bar')
   click_on('SignIn')
@@ -99,39 +99,39 @@ Given("they login as {string} with a random pid") do |username|
   click_on('I Agree')
 end
 
-Given("they submit cycle 3 {string}") do |string|
+Given('they submit cycle 3 {string}') do |string|
   fill_in('cycle_three_attribute[cycle_three_data]', with: string)
   click_on('Continue')
 end
 
-Given("they have all their documents") do
+Given('they have all their documents') do
   choose('select_documents_form_any_driving_licence_true')
   choose('Great Britain')
   choose('select_documents_form_passport_true')
   click_on('Continue')
 end
 
-Given("they have a smart phone") do
+Given('they have a smart phone') do
   choose('select_phone_form_mobile_phone_true')
   choose('select_phone_form_smart_phone_true')
   click_on('Continue')
 end
 
-Given("they do not have a phone") do
+Given('they do not have a phone') do
   choose('select_phone_form_mobile_phone_false')
   click_on('Continue')
 end
 
-Given("they register with {string}") do |idp|
+Given('they register with {string}') do |idp|
   click_on("Choose #{idp}")
   click_on("Continue to the #{idp} website")
 end
 
-Given("they select IDP {string}") do |idp|
+Given('they select IDP {string}') do |idp|
   click_on("Select #{idp}", match: :first)
 end
 
-Given("they enter user details:") do |details|
+Given('they enter user details:') do |details|
   details.rows_hash.each do |input, value|
     fill_in(input, with: value)
   end
@@ -144,7 +144,7 @@ Given("they enter user details:") do |details|
   click_on('Continue')
 end
 
-Given("they enter eidas user details:") do |details|
+Given('they enter eidas user details:') do |details|
   details.rows_hash.each do |input, value|
     fill_in(input, with: value)
   end
@@ -156,17 +156,17 @@ Given("they enter eidas user details:") do |details|
 
 end
 
-Then("they should be at IDP {string}") do |idp|
+Then('they should be at IDP {string}') do |idp|
   page = env('idps').fetch(idp)
   assert_current_path(page, url: true)
 end
 
-Then("they should be successfully verified") do
+Then('they should be successfully verified') do
   find('.success-notice')
   assert_text('Your identity has been confirmed')
 end
 
-Then("a user should have been created with details:") do |details|
+Then('a user should have been created with details:') do |details|
   assert_text('Your user account has been created')
 
   details.rows_hash.each do |k, v|
@@ -174,8 +174,8 @@ Then("a user should have been created with details:") do |details|
   end
 end
 
-Then("user account creation should fail") do
-  assert_text("Sorry, something went wrong")
+Then('user account creation should fail') do
+  assert_text('Sorry, something went wrong')
 end
 
 Then('they arrive at the Start page') do
@@ -184,4 +184,5 @@ end
 
 Then('they arrive at the country picker') do
   assert_text('Use a digital identity from another European country')
+  assert_text('You can use a digital identity from another European country to access services on GOV.UK.')
 end
