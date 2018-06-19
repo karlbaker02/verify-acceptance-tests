@@ -128,7 +128,7 @@ Given("they register with {string}") do |idp|
 end
 
 Given("they select IDP {string}") do |idp|
-  click_on("Select #{idp}")
+  click_on("Select #{idp}", match: :first)
 end
 
 Given("they enter user details:") do |details|
