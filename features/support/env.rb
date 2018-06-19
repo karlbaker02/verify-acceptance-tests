@@ -25,22 +25,22 @@ if ENV['TEST_ENV'] == "local" || ENV['SHOW_BROWSER']
     Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
   end
 else
+  selenium_hub_url = "http://selenium-hub:4444/wd/hub"
   Capybara.register_driver "selenium_remote_firefox".to_sym do |app|
-    Capybara::Selenium::Driver.new(app, browser: :remote, url: "http://selenium-hub:4444/wd/hub", desired_capabilities: :firefox)
+    Capybara::Selenium::Driver.new(app, browser: :remote, url: selenium_hub_url, desired_capabilities: :firefox)
   end
 
   Capybara.javascript_driver = :selenium_remote_firefox
 
   Capybara.register_driver no_javascript_driver do |app|
-    Capybara::Selenium::Driver.new(app, browser: :remote, url: "http://selenium-hub:4444/wd/hub", desired_capabilities: :firefox, options: options)
+    Capybara::Selenium::Driver.new(app, browser: :remote, url: selenium_hub_url, desired_capabilities: :firefox, options: options)
   end
 end
 
 #Screenshot config
 ## screenshots saved under test name + date
-Capybara::Screenshot.register_filename_prefix_formatter(:cucumber) do |example|
-  puts "Example object: #{example.name}"
-  "screenshot_#{example.name.gsub(' ', '-').gsub(/^.*\/spec\//, '')}"
+Capybara::Screenshot.register_filename_prefix_formatter(:cucumber) do |failing_test|
+  "screenshot_#{failing_test.name.tr(' ', '-').gsub(/^.*\/spec\//, '')}"
 end
 
 ## dynamically register javascript screenshot driver
@@ -56,6 +56,6 @@ end
 ## default host to assist in rendering
 Capybara.asset_host = 'http://localhost:3000'
 ## host directory for screenshot files
-Capybara.save_path = "tmp/capybara"
+Capybara.save_path = "testreport/"
 # Keep only the screenshots generated from the last failing test suite
 Capybara::Screenshot.prune_strategy = :keep_last_run
