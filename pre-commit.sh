@@ -8,4 +8,5 @@ fi
 set -eu
 
 bundle --quiet
-SHOW_BROWSER=${SHOW_BROWSER:-"true"} TEST_ENV=local bundle exec cucumber
+mkdir -p testreport
+SHOW_BROWSER=${SHOW_BROWSER:-"true"} TEST_ENV=local bundle exec cucumber --strict

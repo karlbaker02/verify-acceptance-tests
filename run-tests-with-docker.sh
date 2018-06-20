@@ -1,9 +1,13 @@
 #!/usr/bin/env sh
 set -eu
 
-trap "docker-compose down" EXIT
+teardown() {
+    docker-compose down
+}
+
+trap teardown EXIT
 
 docker-compose build verify-acceptance-tests
 docker-compose run \
                -e TEST_ENV=${TEST_ENV:-"joint"} \
-               verify-acceptance-tests $@
+               verify-acceptance-tests -f pretty -f junit -o testreport/ $@

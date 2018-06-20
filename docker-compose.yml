@@ -8,3 +8,7 @@ services:
     build: .
     depends_on:
       - selenium-hub
+    volumes:
+      - type: bind
+        source: ./testreport/
+        target: /testreport
