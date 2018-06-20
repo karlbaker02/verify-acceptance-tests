@@ -9,5 +9,6 @@ trap teardown EXIT
 
 docker-compose build verify-acceptance-tests
 docker-compose run \
+               -u $(id -u):$(id -g) \
                -e TEST_ENV=${TEST_ENV:-"joint"} \
                verify-acceptance-tests -f pretty -f junit -o testreport/ $@
