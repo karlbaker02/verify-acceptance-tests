@@ -4,11 +4,7 @@ services:
   selenium-hub:
     image: selenium/standalone-firefox
 
-  verify-acceptance-tests:
+  test-runner:
     build: .
     depends_on:
       - selenium-hub
-    volumes:
-      - type: bind
-        source: ./testreport/
-        target: /testreport
