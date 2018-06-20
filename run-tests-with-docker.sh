@@ -7,6 +7,7 @@ teardown() {
 
 trap teardown EXIT
 
+mkdir -p testreport
 docker-compose build verify-acceptance-tests
 docker-compose run \
                -u $(id -u):$(id -g) \
