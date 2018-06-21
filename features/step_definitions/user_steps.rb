@@ -13,6 +13,17 @@ def see_journey_picker?
   @see_journey_picker
 end
 
+def page_heading_text(page)
+  case page
+    when 'select-documents' then
+      'Your photo identity document'
+    when 'start' then
+      'Sign in with GOV.UK Verify'
+    when 'start' then
+      'Who do you have an identity account with?'
+  end
+end
+
 Given('the user is at Test RP') do
   visit(env('test-rp'))
   @see_journey_picker = true
@@ -46,10 +57,17 @@ Given('they start a sign in journey') do
   click_on('Continue')
 end
 
-Given('they start a registration journey') do
-  click_on('Start')
-
+Given('this is their first time using Verify') do
   click_on('Use GOV.UK Verify') if see_journey_picker?
+  choose('start_form_selection_true')
+  click_on('Continue')
+  click_on('Next')
+  click_on('Next')
+  click_on('Start now')
+  click_on('Continue')
+end
+
+Given('they choose a registration journey') do
   choose('start_form_selection_true')
   click_on('Continue')
   click_on('Next')
@@ -58,6 +76,18 @@ Given('they start a registration journey') do
   click_on('Continue')
 
   choose('will_it_work_for_me_form_above_age_threshold_true')
+  choose('will_it_work_for_me_form_resident_last_12_months_true')
+  click_on('Continue')
+end
+
+And('they are above the age threshold') do
+  choose('will_it_work_for_me_form_above_age_threshold_true')
+  choose('will_it_work_for_me_form_resident_last_12_months_true')
+  click_on('Continue')
+end
+
+And('they are below the age threshold') do
+  choose('will_it_work_for_me_form_above_age_threshold_false')
   choose('will_it_work_for_me_form_resident_last_12_months_true')
   click_on('Continue')
 end
@@ -127,13 +157,49 @@ Given('they do not have a phone') do
   click_on('Continue')
 end
 
-Given('they register with {string}') do |idp|
+Given('they continue to register with IDP {string}') do |idp|
   click_on("Choose #{idp}")
   click_on("Continue to the #{idp} website")
 end
 
 Given('they select IDP {string}') do |idp|
   click_on("Select #{idp}", match: :first)
+end
+
+Given('the IDP returns an Authn Failure response') do
+  click_on('tab-login')
+  click_on('Authn Failure')
+end
+
+Given('the IDP returns a Requester Error response') do
+  click_on('Submit Requester Error')
+end
+
+Given('they fail sign in with idp') do
+  click_on('Authn Failure')
+end
+
+Given('they choose try to verify') do
+  click_link('verify-identity-online')
+end
+
+Given('they choose to verify with another certified company') do
+  find('span.summary', text: 'Try verifying with another certified company').click
+end
+
+Given('they select the link find another company to verify you') do
+  click_link('Find another company to verify you')
+end
+
+Given('they choose to start again with another IDP') do
+  click_on('startAgain')
+end
+
+Given('they choose to go back to the {string} page') do |page|
+  visit(URI.join(env('frontend'), page))
+
+  page_text = page_heading_text(page)
+  assert_text(page_text)
 end
 
 Given('they enter user details:') do |details|
@@ -158,7 +224,6 @@ Given('they enter eidas user details:') do |details|
   fill_in('password', with: 'bar')
   click_on('Register')
   click_on('I Agree')
-
 end
 
 Then('they should be at IDP {string}') do |idp|
@@ -183,7 +248,7 @@ Then('user account creation should fail') do
   assert_text('Sorry, something went wrong')
 end
 
-Then('they arrive at the Start page') do
+Then('they should arrive at the Start page') do
   assert_text('Sign in with GOV.UK Verify')
 end
 
@@ -211,4 +276,20 @@ end
 
 Then('they logout') do
   click_on('Logout')
+end
+
+Then('they should arrive at the Select documents page') do
+  assert_text('Your photo identity document')
+end
+
+Then('they should arrive at the Sign in page') do
+  assert_text('Who do you have an identity account with?')
+end
+
+Then('they should arrive at the Failed registration page') do
+  assert_text('was unable to verify your identity')
+end
+
+Then('they should arrive at the Failed sign in page') do
+  assert_text('You may have selected the wrong company')
 end
