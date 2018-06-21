@@ -202,6 +202,10 @@ Given('they choose to go back to the {string} page') do |page|
   assert_text(page_text)
 end
 
+Given('they want to cancel sign in') do
+  click_on('Cancel')
+end
+
 Given('they enter user details:') do |details|
   details.rows_hash.each do |input, value|
     fill_in(input, with: value)
