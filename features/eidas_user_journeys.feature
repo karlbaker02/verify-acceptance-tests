@@ -2,6 +2,14 @@ Feature: eIDAS user journeys
 
   This tests eIDAS end-to-end journeys in the Verify Hub via the Rails frontend.
 
+  Scenario: User selects a country and then goes back to select another
+    Given the user is at Test RP
+    And they start an eIDAS journey
+    And they select eIDAS scheme "Stub IDP Demo"
+    And they go back to the country picker
+    And they select eIDAS scheme "Stub IDP Demo"
+    Then they should be at IDP "Stub Country"
+
   Scenario: User signs in with a country
     Given the user is at Test RP
     And they start an eIDAS journey
