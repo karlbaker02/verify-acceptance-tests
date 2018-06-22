@@ -5,9 +5,9 @@ Feature: eIDAS user journeys
   Scenario: User selects a country and then goes back to select another
     Given the user is at Test RP
     And they start an eIDAS journey
-    And they select eIDAS scheme "Stub IDP Demo"
-    And they go back to the country picker
-    And they select eIDAS scheme "Stub IDP Demo"
+    #And they select eIDAS scheme "Stub IDP Demo"
+    #And they go back to the country picker
+    #And they select eIDAS scheme "Stub IDP Demo"
     Then they should be at IDP "Stub Country"
 
 
