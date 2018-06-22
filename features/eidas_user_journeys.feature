@@ -10,6 +10,7 @@ Feature: eIDAS user journeys
     And they select eIDAS scheme "Stub IDP Demo"
     Then they should be at IDP "Stub Country"
 
+
   Scenario: User signs in with a country
     Given the user is at Test RP
     And they start an eIDAS journey
