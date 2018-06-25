@@ -31,6 +31,10 @@ Given('we set the RP name to {string}') do |name|
   @see_journey_picker = false
 end
 
+Given('they select journey hint {string}') do |hint|
+  select(hint, from: 'journey_hint')
+end
+
 Given('they start a journey') do
   click_on('Start')
 end
@@ -186,4 +190,25 @@ end
 Then('they arrive at the country picker') do
   assert_text('Use a digital identity from another European country')
   assert_text('You can use a digital identity from another European country to access services on GOV.UK.')
+end
+
+Then('they arrive at the IdP picker') do
+  assert_text('Who do you have an identity account with?')
+end
+
+Then('they arrive at the confirm identity page for {string}') do |idp|
+  assert_text('Sign in with '+idp)
+end
+
+Then('they arrive at the prove identity page') do
+  assert_text('Prove your identity to continue')
+  assert_text('Choose how you want to prove your identity so you can register for an identity profile.')
+end
+
+Then('they arrive at the about page') do
+  assert_text('GOV.UK Verify is a secure service built to fight the growing problem of online identity theft.')
+end
+
+Then('they logout') do
+  click_on('Logout')
 end
