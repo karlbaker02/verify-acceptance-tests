@@ -47,16 +47,8 @@ Scenario: Journey hint Registration
 
   Scenario: Journey hint Unspecified when Eidas is Disabled
     Given the user is at Test RP
+    And we set the RP name to "test-rp-non-eidas"
     And they select journey hint "Unspecified"
     And they start a journey
-    Then they arrive at the prove identity page
+    Then they arrive at the Start page
 
-  Scenario: Journey hint Other value XYZ
-    Given the user is at Test RP
-    And they start a sign in journey
-    And they select IDP "Stub Idp Demo"
-    And they login as "stub-idp-demo"
-    And they logout
-    And they select journey hint "Other value XYZ"
-    And they start a journey
-    Then they arrive at the confirm identity page for "Stub Idp Demo"
