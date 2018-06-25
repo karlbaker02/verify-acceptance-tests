@@ -81,6 +81,7 @@ end
 
 Given('they go back to the country picker') do
   visit(URI.join(env('frontend'), 'choose-a-country'))
+  assert_text('Use a digital identity from another European country')
 end
 
 Given('they login as {string}') do |username|
