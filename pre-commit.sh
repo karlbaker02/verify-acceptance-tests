@@ -9,4 +9,4 @@ set -eu
 
 bundle --quiet
 mkdir -p testreport
-SHOW_BROWSER=${SHOW_BROWSER:-"true"} TEST_ENV=local bundle exec cucumber --strict features/journey_hint.feature
+SHOW_BROWSER=${SHOW_BROWSER:-"true"} TEST_ENV=local bundle exec cucumber --strict
