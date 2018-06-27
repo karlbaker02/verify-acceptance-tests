@@ -15,12 +15,12 @@ end
 
 def page_heading_text(page)
   case page
-    when 'select-documents' then
-      'Your photo identity document'
-    when 'start' then
-      'Sign in with GOV.UK Verify'
-    when 'start' then
-      'Who do you have an identity account with?'
+  when 'select-documents' then
+    'Your photo identity document'
+  when 'start' then
+    'Sign in with GOV.UK Verify'
+  when 'start' then
+    'Who do you have an identity account with?'
   end
 end
 
@@ -78,6 +78,14 @@ Given('they choose a registration journey') do
   choose('will_it_work_for_me_form_above_age_threshold_true')
   choose('will_it_work_for_me_form_resident_last_12_months_true')
   click_on('Continue')
+end
+
+Given('they choose an loa1 registration journey') do
+  choose('start_form_selection_true')
+  click_on('Continue')
+  click_on('Next')
+  click_on('Next')
+  click_on('Start now')
 end
 
 And('they are above the age threshold') do
@@ -162,6 +170,12 @@ Given('they continue to register with IDP {string}') do |idp|
   click_on("Continue to the #{idp} website")
 end
 
+Given('they register for an LOA1 profile with IDP {string}') do |idp|
+  click_on("Choose #{idp}")
+  assert_text('Create your ' + idp + ' identity account')
+  click_on("Continue to the #{idp} website")
+end
+
 Given('they select IDP {string}') do |idp|
   click_on("Select #{idp}", match: :first)
 end
@@ -214,6 +228,24 @@ Given('they enter user details:') do |details|
   fill_in('username', with: SecureRandom.hex)
   fill_in('password', with: 'bar')
   click_on('Register')
+  click_on('I Agree')
+
+  click_on('Continue')
+end
+
+Given('they submit loa1 user details:') do |details|
+  details.rows_hash.each do |input, value|
+    fill_in(input, with: value)
+  end
+
+  fill_in('username', with: SecureRandom.hex)
+  fill_in('password', with: 'bar')
+  select('Level 1', from: 'loa')
+
+  click_on('Register')
+end
+
+Given('they give their consent') do
   click_on('I Agree')
 
   click_on('Continue')
@@ -296,4 +328,9 @@ end
 
 Then('they should arrive at the Failed sign in page') do
   assert_text('You may have selected the wrong company')
+end
+
+Then('our Consent page should include LEVEL_1') do
+  assert_text("You've successfully authenticated")
+  assert_text('LEVEL_1')
 end

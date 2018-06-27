@@ -27,7 +27,7 @@ Scenario: Journey hint Registration
     And we set the RP name to "test-rp-non-eidas"
     And they select journey hint "Sign-in with eIDAS"
     And they start a journey
-    Then they arrive at the Start page
+    Then they should arrive at the Start page
 
   Scenario: Journey hint Non-repudiation
     Given the user is at Test RP
@@ -50,5 +50,5 @@ Scenario: Journey hint Registration
     And we set the RP name to "test-rp-non-eidas"
     And they select journey hint "Unspecified"
     And they start a journey
-    Then they arrive at the Start page
+    Then they should arrive at the Start page
 
