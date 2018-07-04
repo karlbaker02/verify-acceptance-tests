@@ -2,6 +2,7 @@ Feature: eIDAS user journeys
 
   This tests eIDAS end-to-end journeys in the Verify Hub via the Rails frontend.
 
+  @Eidas
   Scenario: User selects a country and then goes back to select another
     Given the user is at Test RP
     And they start an eIDAS journey
@@ -11,6 +12,7 @@ Feature: eIDAS user journeys
     And they select eIDAS scheme "Stub IDP Demo"
     Then they should be at IDP "Stub Country"
 
+  @Eidas
   Scenario: User signs in with a country
     Given the user is at Test RP
     And they start an eIDAS journey
@@ -19,6 +21,7 @@ Feature: eIDAS user journeys
     Then they should be successfully verified
 
 
+  @Eidas
   Scenario: User with accents in name signs in
     Given the user is at Test RP
     And they start an eIDAS journey
@@ -27,6 +30,7 @@ Feature: eIDAS user journeys
     Then they should be successfully verified
 
 
+  @Eidas
   Scenario: User with non-Latin name signs in
     Given the user is at Test RP
     And they start an eIDAS journey
@@ -35,6 +39,7 @@ Feature: eIDAS user journeys
     Then they should be successfully verified
 
 
+  @Eidas
   Scenario: User signs in with a country and does Cycle 3
     Given the user is at Test RP
     And they start an eIDAS journey
@@ -44,6 +49,7 @@ Feature: eIDAS user journeys
     Then they should be successfully verified
 
 
+  @Eidas
   Scenario: User registers with stub country, with cycle3 and forces UAC
     Given the user is at Test RP
     And we do not want to match the user
@@ -61,6 +67,7 @@ Feature: eIDAS user journeys
       | dateofbirth | 1987-03-03 |
 
 
+  @Eidas
   Scenario: User signs creates a new account
     Given the user is at Test RP
     And we do not want to match the user
