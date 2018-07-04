@@ -15,3 +15,9 @@ joint:
   test-rp: https://test-rp-stub-joint.ida.digital.cabinet-office.gov.uk/test-rp
   idps:
     Stub Country: https://ida-stub-idp-joint.cloudapps.digital/eidas/stub-country/login
+
+staging:
+  frontend: https://www.staging.signin.service.gov.uk
+  test-rp: https://test-rp-stub-staging.ida.digital.cabinet-office.gov.uk/test-rp
+  idps:
+    Stub Country: https://ida-stub-idp-staging.cloudapps.digital/eidas/stub-country/login
