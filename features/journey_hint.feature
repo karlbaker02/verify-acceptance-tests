@@ -16,6 +16,7 @@ Scenario: Journey hint Registration
     And they start a journey
     Then they arrive at the IdP picker
 
+  @Eidas
   Scenario: Journey hint Sign-in with eIDAS
     Given the user is at Test RP
     And they select journey hint "Sign-in with eIDAS"

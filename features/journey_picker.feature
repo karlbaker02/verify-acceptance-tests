@@ -12,6 +12,7 @@ Feature: Page to pick between Verify and eIDAS journeys
     Then they should arrive at the Start page
 
 
+  @Eidas
   Scenario: eIDAS button on picker page goes to country picker
     Given the user is at Test RP
     When they start a journey
