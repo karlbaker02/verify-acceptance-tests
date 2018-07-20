@@ -16,7 +16,7 @@ Feature: User loa1
       | addressTown     | newtown    |
       | addressPostCode | 1A 2BC     |
       | dateOfBirth     | 1960-03-23 |
-    Then our Consent page should include LEVEL_1
+    Then our Consent page should show "Level of assurance" = "LEVEL_1"
     When they give their consent
     Then they should be successfully verified
 

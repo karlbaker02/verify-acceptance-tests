@@ -11,7 +11,7 @@ Feature: User account creation
     And they have all their documents
     And they do not have a phone
     And they continue to register with IDP "Stub Idp Demo"
-    And they enter user details:
+    And they submit user details:
       | firstname       | Jane       |
       | surname         | Doe        |
       | addressLine1    | 123        |
@@ -19,6 +19,7 @@ Feature: User account creation
       | addressTown     | Marlbury   |
       | addressPostCode | ABC 123    |
       | dateOfBirth     | 1987-03-03 |
+    When they give their consent
     And they submit cycle 3 "AA123456A"
     Then a user should have been created with details:
       | firstname   | Jane       |
@@ -38,6 +39,7 @@ Feature: User account creation
       | surname     | Bauer      |
       | dateofbirth | 1984-02-29 |
 
+
   Scenario: Registration without cycle 3
     Given the user is at Test RP
     And we set the RP name to "test-rp-noc3"
@@ -48,7 +50,7 @@ Feature: User account creation
     And they have all their documents
     And they do not have a phone
     And they continue to register with IDP "Stub Idp Demo"
-    And they enter user details:
+    And they submit user details:
       | firstname       | Jane       |
       | surname         | Doe        |
       | addressLine1    | 123        |
@@ -56,6 +58,7 @@ Feature: User account creation
       | addressTown     | Marlbury   |
       | addressPostCode | ABC 123    |
       | dateOfBirth     | 1987-03-03 |
+    When they give their consent
     Then a user should have been created with details:
       | firstname   | Jane       |
       | surname     | Doe        |
