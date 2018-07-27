@@ -5,11 +5,13 @@ Feature: User account creation
   Scenario: Registration and cycle 3
     Given the user is at Test RP
     And we do not want to match the user
-    And they start a registration journey
+    And they start a journey
+    And this is their first time using Verify
+    And they are above the age threshold
     And they have all their documents
     And they do not have a phone
-    And they register with "Stub Idp Demo"
-    And they enter user details:
+    And they continue to register with IDP "Stub Idp Demo"
+    And they submit user details:
       | firstname       | Jane       |
       | surname         | Doe        |
       | addressLine1    | 123        |
@@ -17,6 +19,7 @@ Feature: User account creation
       | addressTown     | Marlbury   |
       | addressPostCode | ABC 123    |
       | dateOfBirth     | 1987-03-03 |
+    When they give their consent
     And they submit cycle 3 "AA123456A"
     Then a user should have been created with details:
       | firstname   | Jane       |
@@ -41,11 +44,13 @@ Feature: User account creation
     Given the user is at Test RP
     And we set the RP name to "test-rp-noc3"
     And we do not want to match the user
-    And they start a registration journey
+    And they start a journey
+    And this is their first time using Verify
+    And they are above the age threshold
     And they have all their documents
     And they do not have a phone
-    And they register with "Stub Idp Demo"
-    And they enter user details:
+    And they continue to register with IDP "Stub Idp Demo"
+    And they submit user details:
       | firstname       | Jane       |
       | surname         | Doe        |
       | addressLine1    | 123        |
@@ -53,6 +58,7 @@ Feature: User account creation
       | addressTown     | Marlbury   |
       | addressPostCode | ABC 123    |
       | dateOfBirth     | 1987-03-03 |
+    When they give their consent
     Then a user should have been created with details:
       | firstname   | Jane       |
       | surname     | Doe        |
