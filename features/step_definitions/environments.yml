@@ -21,3 +21,9 @@ joint:
     Stub Country: https://ida-stub-idp-joint.cloudapps.digital/eidas/stub-country/login
     Stub Idp Demo: https://ida-stub-idp-joint.cloudapps.digital/stub-idp-demo/login
     Post Office Stub: https://ida-stub-idp-joint.cloudapps.digital/post-office-test-rp/login
+
+staging:
+  frontend: https://www.staging.signin.service.gov.uk
+  test-rp: https://test-rp-stub-staging.ida.digital.cabinet-office.gov.uk/test-rp
+  idps:
+    Stub Country: https://ida-stub-idp-staging.cloudapps.digital/eidas/stub-country/login
