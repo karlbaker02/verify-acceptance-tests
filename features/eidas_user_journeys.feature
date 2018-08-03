@@ -79,3 +79,13 @@ Feature: eIDAS user journeys
       | firstname   | Jack       |
       | surname     | Bauer      |
       | dateofbirth | 1984-02-29 |
+
+  @Eidas
+  Scenario: User is linked back to RP when Country fails login
+    Given the user is at Test RP
+    And they start an eIDAS journey
+    And they select IDP "Stub IDP Demo"
+    And they click AuthFailure
+    Then they should be at the failed country signin page for "Stub Country"
+    Given they click the link to see other ways to prove identity online
+    Then they are at Test RP showing an error message "NoAuthenticationContext - Unknown status code encountered."

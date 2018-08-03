@@ -356,7 +356,7 @@ end
 
 Then ('they are shown the cookies missing page') do
   assert_text('GOV.UK Verify can only be accessed from a government service.')
-  assert_text("If you can’t access GOV.UK Verify from a service, enable your cookies.")
+  assert_text('If you can’t access GOV.UK Verify from a service, enable your cookies.')
 end
 
 When('they go to the feedback form') do
@@ -386,4 +386,23 @@ When('they click {string}') do |value|
   else
     page.find(:xpath, "//input[@value= '#{value}']").click
   end
+end
+
+And('they click AuthFailure') do
+  click_on('Authn Failure')
+end
+
+
+Then('they should be at the failed country signin page for {string}') do |country|
+  assert_text("Your identity scheme in #{country} has been unable to confirm your identity")
+end
+
+
+Given('they click the link to see other ways to prove identity online') do
+  click_on('Other ways to prove your identity online')
+end
+
+
+Then('they are at Test RP showing an error message {string}') do |error_message|
+  assert_text(error_message)
 end
