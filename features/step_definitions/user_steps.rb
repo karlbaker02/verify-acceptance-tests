@@ -24,6 +24,11 @@ def page_heading_text(page)
   end
 end
 
+Before do
+  visit(env('frontend')+"/cookies")
+  Capybara.reset_sessions!
+end
+
 Given('the user is at Test RP') do
   visit(env('test-rp'))
   @see_journey_picker = true
@@ -299,7 +304,7 @@ Then('a user should have been created with details:') do |details|
 end
 
 Then('user account creation should fail') do
-  assert_text('Sorry, something went wrong')
+  assert_text('Sorry, there is a problem with the service')
 end
 
 Then('they should arrive at the Start page') do
