@@ -5,8 +5,8 @@ Feature: User simple flows - sign in and registeration
   Scenario: Sign in successful with IDP and cycle 3
     Given the user is at Test RP
     And they start a sign in journey
-    And they select IDP "Experian"
-    And they login as "experian-c3"
+    And they select IDP "Stub Idp Demo Two"
+    And they login as "stub-idp-demo-two-c3"
     And they submit cycle 3 "AA123456A"
     Then they should be successfully verified
 
@@ -19,7 +19,7 @@ Feature: User simple flows - sign in and registeration
     And they do not have their documents
     And they do not have other identity documents
     And they have a smart phone
-    And they continue to register with IDP "Experian"
+    And they continue to register with IDP "Stub Idp Demo Two"
     And they submit user details:
       | firstname       | Jane       |
       | surname         | Doe        |

@@ -10,7 +10,7 @@ Feature: User account creation
     And they are above the age threshold
     And they have all their documents
     And they do not have a phone
-    And they continue to register with IDP "Stub Idp Demo"
+    And they continue to register with IDP "Stub Idp Demo One"
     And they submit user details:
       | firstname       | Jane       |
       | surname         | Doe        |
@@ -31,8 +31,8 @@ Feature: User account creation
     Given the user is at Test RP
     And we do not want to match the user
     And they start a sign in journey
-    And they select IDP "Stub Idp Demo"
-    And they login as "stub-idp-demo"
+    And they select IDP "Stub Idp Demo One"
+    And they login as "stub-idp-demo-one"
     And they submit cycle 3 "AA123456A"
     Then a user should have been created with details:
       | firstname   | Jack       |
@@ -49,7 +49,7 @@ Feature: User account creation
     And they are above the age threshold
     And they have all their documents
     And they do not have a phone
-    And they continue to register with IDP "Stub Idp Demo"
+    And they continue to register with IDP "Stub Idp Demo One"
     And they submit user details:
       | firstname       | Jane       |
       | surname         | Doe        |
@@ -70,8 +70,8 @@ Feature: User account creation
     And we set the RP name to "test-rp-noc3"
     And we do not want to match the user
     And they start a sign in journey
-    And they select IDP "Stub Idp Demo"
-    And they login as "stub-idp-demo"
+    And they select IDP "Stub Idp Demo One"
+    And they login as "stub-idp-demo-one"
     Then a user should have been created with details:
       | firstname   | Jack       |
       | surname     | Bauer      |
@@ -84,6 +84,6 @@ Feature: User account creation
     And we do not want to match the user
     And we want to fail account creation
     And they start a sign in journey
-    And they select IDP "Stub Idp Demo"
-    And they login as "stub-idp-demo" with a random pid
+    And they select IDP "Stub Idp Demo One"
+    And they login as "stub-idp-demo-one" with a random pid
     Then user account creation should fail
