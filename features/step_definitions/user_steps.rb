@@ -207,7 +207,7 @@ Given('they register for an LOA1 profile with IDP {string}') do |idp|
 end
 
 Given('they select IDP {string}') do |idp|
-  click_on("Select #{idp}", match: :first)
+  click_on("Select #{idp}", match: :prefer_exact)
 end
 
 Given('the IDP returns an Authn Failure response') do
