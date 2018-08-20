@@ -79,3 +79,11 @@ Feature: eIDAS user journeys
       | firstname   | Jack       |
       | surname     | Bauer      |
       | dateofbirth | 1984-02-29 |
+
+  @Eidas
+  Scenario: User signs in with a country which responds with rsassa-pss signing algorithm
+    Given the user is at Test RP
+    And they start an eIDAS journey
+    And they select IDP "Stub IDP Demo"
+    And they login as "stub-country" with "rsassa-pss" signing algorithm
+    Then they should be successfully verified

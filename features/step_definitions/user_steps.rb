@@ -392,3 +392,12 @@ When('they click {string}') do |value|
     page.find(:xpath, "//input[@value= '#{value}']").click
   end
 end
+
+Given('they login as {string} with {string} signing algorithm') do |username, algorithm|
+  fill_in('username', with: username)
+  fill_in('password', with: 'bar')
+  click_on('SignIn')
+  assert_text("You've successfully authenticated")
+  page.execute_script("document.getElementById('signingAlgorithm').value = '#{algorithm}';")
+  click_on('I Agree')
+end
