@@ -33,12 +33,12 @@ Scenario: Journey hint Registration
   Scenario: Journey hint Non-repudiation
     Given the user is at Test RP
     And they start a sign in journey
-    And they select IDP "Stub Idp Demo"
-    And they login as "stub-idp-demo"
+    And they select IDP "Stub Idp Demo One"
+    And they login as "stub-idp-demo-one"
     And they logout
     And they select journey hint "Non-repudiation"
     And they start a journey
-    Then they arrive at the confirm identity page for "Stub Idp Demo"
+    Then they arrive at the confirm identity page for "Stub Idp Demo One"
 
   Scenario: Journey hint Unspecified
     Given the user is at Test RP

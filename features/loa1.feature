@@ -7,7 +7,7 @@ Feature: User loa1
     And we set the RP name to "loa1-test-rp"
     When they start a journey
     And they choose an loa1 registration journey
-    And they register for an LOA1 profile with IDP "Digidentity"
+    And they register for an LOA1 profile with IDP "Stub Idp Demo One"
     When they submit loa1 user details:
       | firstname       | Jessica    |
       | surname         | Rabbit     |
@@ -25,6 +25,6 @@ Feature: User loa1
     Given the user is at Test RP
     And we set the RP name to "loa1-test-rp"
     When they start a sign in journey
-    And they select IDP "Digidentity"
-    And they login as "digidentity-loa1"
+    And they select IDP "Stub Idp Demo One"
+    And they login as "stub-idp-demo-one-loa1"
     Then they should be successfully verified

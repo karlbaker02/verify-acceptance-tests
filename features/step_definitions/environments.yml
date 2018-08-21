@@ -4,7 +4,8 @@ local:
   idps:
     Stub Country: http://localhost:50140/eidas/stub-country/login
     Stub Idp Demo: http://localhost:50140/stub-idp-demo/login
-    Post Office Stub: http://localhost:50140/post-office-test-rp/login
+    Stub Idp Demo One: http://localhost:50140/stub-idp-demo-one/login
+    Stub Idp Demo Two: http://localhost:50140/stub-idp-demo-two/login
 
 docker-local:
   frontend: http://frontend
@@ -12,7 +13,6 @@ docker-local:
   idps:
     Stub Country: http://stub-idp/eidas/stub-country/login
     Stub Idp Demo: http://stub-idp/stub-idp-demo/login
-    Post Office Stub: http://stub-idp/post-office-test-rp/login
 
 joint:
   frontend: https://www.joint.signin.service.gov.uk
@@ -20,11 +20,13 @@ joint:
   idps:
     Stub Country: https://ida-stub-idp-joint.cloudapps.digital/eidas/stub-country/login
     Stub Idp Demo: https://ida-stub-idp-joint.cloudapps.digital/stub-idp-demo/login
-    Post Office Stub: https://ida-stub-idp-joint.cloudapps.digital/post-office-test-rp/login
+    Stub Idp Demo One: https://ida-stub-idp-joint.cloudapps.digital/stub-idp-demo-one/login
+    Stub Idp Demo Two: https://ida-stub-idp-joint.cloudapps.digital/stub-idp-demo-two/login
 
 staging:
   frontend: https://www.staging.signin.service.gov.uk
   test-rp: https://test-rp-stub-staging.ida.digital.cabinet-office.gov.uk/test-rp
   idps:
     Stub Idp Demo: https://ida-stub-idp-staging.cloudapps.digital/stub-idp-demo/login
-    Post Office Stub: https://ida-stub-idp-staging.cloudapps.digital/post-office-test-rp/login
+    Stub Idp Demo One: https://ida-stub-idp-staging.cloudapps.digital/stub-idp-demo-one/login
+    Stub Idp Demo Two: https://ida-stub-idp-staging.cloudapps.digital/stub-idp-demo-two/login

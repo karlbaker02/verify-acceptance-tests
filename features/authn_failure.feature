@@ -12,7 +12,7 @@ Feature: User authentication failure
 
     When they have all their documents
     And they have a smart phone
-    And they continue to register with IDP "Post Office Stub"
+    And they continue to register with IDP "Stub Idp Demo Two"
     When the IDP returns an Authn Failure response
     Then they should arrive at the Failed registration page
 
@@ -24,8 +24,8 @@ Feature: User authentication failure
   Scenario: IDP returns authn failure when user Signs in
     Given the user is at Test RP
     When they start a sign in journey
-    And they select IDP "Post Office Stub"
-    Then they should be at IDP "Post Office Stub"
+    And they select IDP "Stub Idp Demo Two"
+    Then they should be at IDP "Stub Idp Demo Two"
 
     When they fail sign in with idp
     Then they should arrive at the Failed sign in page
@@ -37,8 +37,8 @@ Feature: User authentication failure
   Scenario: IDP returns authn failure requester error when user Signs in
     Given the user is at Test RP
     When they start a sign in journey
-    And they select IDP "Post Office Stub"
-    Then they should be at IDP "Post Office Stub"
+    And they select IDP "Stub Idp Demo Two"
+    Then they should be at IDP "Stub Idp Demo Two"
 
     When the IDP returns a Requester Error response
     Then they should arrive at the Failed sign in page
