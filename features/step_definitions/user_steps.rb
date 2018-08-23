@@ -250,6 +250,10 @@ Given('they want to cancel sign in') do
   click_on('Cancel')
 end
 
+Given('they want to cancel registration') do
+  click_on('Cancel')
+end
+
 Given /they submit (loa1 |)user details:$/ do |assurance_level, details|
 
   details.rows_hash.each do |input, value|
@@ -293,6 +297,16 @@ end
 Then('they should be successfully verified') do
   find('.success-notice')
   assert_text('Your identity has been confirmed')
+end
+
+Then('they should arrive at the {string} Cancel Registration page') do |idp|
+    assert_text("Your identity verification with #{idp} has been cancelled")
+end
+
+Then('they should be successfully verified with level of assurance {string}') do |assurance_level|
+  find('.success-notice')
+  assert_text('Your identity has been confirmed')
+  assert_text("level of assurance #{assurance_level}")
 end
 
 Then('a user should have been created with details:') do |details|

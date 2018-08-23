@@ -27,4 +27,4 @@ Feature: User loa1
     When they start a sign in journey
     And they select IDP "Stub Idp Demo One"
     And they login as "stub-idp-demo-one-loa1"
-    Then they should be successfully verified
+    Then they should be successfully verified with level of assurance "LEVEL_1"
