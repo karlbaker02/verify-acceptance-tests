@@ -30,3 +30,4 @@ Feature: User simple flows - sign in and registeration
       | dateOfBirth     | 1987-03-03 |
     When they give their consent
     Then they should be successfully verified
+
