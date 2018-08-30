@@ -2,7 +2,7 @@ Feature: User registers, returns to confirm identity and signs in successfully
 
   This tests user non-repudiation flow.
 
-  Scenario: User registers, confirms identity and signs in
+  Scenario: User registers with documents, confirms identity and signs in successfully
     Given the user is at Test RP
     And they start a journey
     And this is their first time using Verify
@@ -25,4 +25,4 @@ Feature: User registers, returns to confirm identity and signs in successfully
     Then they arrive at the confirm identity page for "Stub Idp Demo Two"
     When they click "Sign in with Stub Idp Demo Two"
     And they login as the newly registered user
-    Then they should be successfully verified
+    Then they should be successfully verified with level of assurance "LEVEL_2"

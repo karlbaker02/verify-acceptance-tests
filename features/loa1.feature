@@ -18,7 +18,7 @@ Feature: User loa1
       | dateOfBirth     | 1960-03-23 |
     Then our Consent page should show "Level of assurance" = "LEVEL_1"
     When they give their consent
-    Then they should be successfully verified
+    Then they should be successfully verified with level of assurance "LEVEL_1"
 
 
   Scenario: Sign in successful with IDP

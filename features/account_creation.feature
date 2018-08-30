@@ -22,10 +22,10 @@ Feature: User account creation
     When they give their consent
     And they submit cycle 3 "AA123456A"
     Then a user should have been created with details:
-      | firstname   | Jane       |
-      | surname     | Doe        |
-      | dateofbirth | 1987-03-03 |
-
+      | firstname       | Jane           |
+      | surname         | Doe            |
+      | currentaddress  | 123 Test Drive |
+      | dateofbirth     | 1987-03-03     |
 
   Scenario: Sign in and cycle 3
     Given the user is at Test RP
@@ -35,10 +35,10 @@ Feature: User account creation
     And they login as "stub-idp-demo-one"
     And they submit cycle 3 "AA123456A"
     Then a user should have been created with details:
-      | firstname   | Jack       |
-      | surname     | Bauer      |
-      | dateofbirth | 1984-02-29 |
-
+      | firstname      | Jack       |
+      | surname        | Bauer      |
+      | dateofbirth    | 1984-02-29 |
+      | currentaddress | 1 Two St   |
 
   Scenario: Registration without cycle 3
     Given the user is at Test RP
@@ -60,9 +60,10 @@ Feature: User account creation
       | dateOfBirth     | 1987-03-03 |
     When they give their consent
     Then a user should have been created with details:
-      | firstname   | Jane       |
-      | surname     | Doe        |
-      | dateofbirth | 1987-03-03 |
+      | firstname      | Jane           |
+      | surname        | Doe            |
+      | dateofbirth    | 1987-03-03     |
+      | currentaddress | 123 Test Drive |
 
 
   Scenario: Sign in without cycle 3
