@@ -9,4 +9,4 @@ set -eu
 
 bundle --quiet
 mkdir -p testreport
-SHOW_BROWSER=${SHOW_BROWSER:-"true"} TEST_ENV=local bundle exec cucumber --strict
+SHOW_BROWSER=${SHOW_BROWSER:-"false"} TEST_ENV=local bundle exec cucumber --strict
