@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 set -u
 
+# Make sure that we tear down first due to tools deploy getting these
+# containers into an unrecoverable state if we don't explicitly do this
+docker-compose down
 docker-compose build
 docker-compose run \
                -e TEST_ENV=${TEST_ENV:-"joint"} \
