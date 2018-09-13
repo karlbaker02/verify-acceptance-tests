@@ -219,7 +219,7 @@ Given('the IDP returns a Requester Error response') do
   click_on('Submit Requester Error')
 end
 
-Given('they fail sign in with idp') do
+Given('they fail sign in with IDP') do
   click_on('Authn Failure')
 end
 
@@ -317,17 +317,26 @@ Then('a user should have been created with details:') do |details|
   end
 end
 
-Then('user account creation should fail') do
+Then('they should arrive at the Test RP start page with error notice') do
+  page = env('test-rp')
+  assert_current_path(page, ignore_query: true)
+  assert_text('Register for an identity profile')
+  assert_text('There has been a problem signing you in.')
+end
+
+Then('should arrive at the user account creation error page') do
   assert_text('Sorry, there is a problem with the service')
+  assert_current_path('/response-processing')
 end
 
 Then('they should arrive at the Start page') do
   assert_text('Sign in with GOV.UK Verify')
 end
 
-Then('they arrive at the country picker') do
+Then('they should arrive at the country picker') do
   assert_text('Use a digital identity from another European country')
   assert_text('You can use a digital identity from another European country to access services on GOV.UK.')
+  assert_current_path('/choose-a-country')
 end
 
 Then('they arrive at the IdP picker') do
@@ -338,9 +347,10 @@ Then('they arrive at the confirm identity page for {string}') do |idp|
   assert_text('Sign in with '+idp)
 end
 
-Then('they arrive at the prove identity page') do
+Then('they should arrive at the prove identity page') do
   assert_text('Prove your identity to continue')
   assert_text('Choose how you want to prove your identity so you can register for an identity profile.')
+  assert_current_path('/prove-identity')
 end
 
 Then('they arrive at the about page') do
@@ -365,6 +375,12 @@ end
 
 Then('they should arrive at the Failed sign in page') do
   assert_text('You may have selected the wrong company')
+end
+
+Then('they should arrive at the Failed country sign in page') do
+  assert_text('Your identity scheme in Stub Country was unable to confirm your identity')
+  assert_text('There are other ways you can access TestRP.')
+  assert_current_path('/failed-country-sign-in')
 end
 
 Then('our Consent page should show "Level of assurance" = {string}') do |assurance_level|
@@ -399,12 +415,16 @@ And('they go back to the start page') do
   visit(URI.join(env('frontend'), 'start'))
 end
 
-When('they click {string}') do |value|
+When('they click button {string}') do |value|
   if value == ('Sign in with '+@idp)
     page.find(:xpath, "//button[contains(text(), '#{value}')]").click
   else
     page.find(:xpath, "//input[@value= '#{value}']").click
   end
+end
+
+When('they click on link {string}') do |value|
+  click_on(value)
 end
 
 Given('they login as {string} with {string} signing algorithm') do |username, algorithm|

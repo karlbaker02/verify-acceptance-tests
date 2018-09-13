@@ -22,10 +22,10 @@ Feature: User account creation
     When they give their consent
     And they submit cycle 3 "AA123456A"
     Then a user should have been created with details:
-      | firstname       | Jane           |
-      | surname         | Doe            |
-      | currentaddress  | 123 Test Drive |
-      | dateofbirth     | 1987-03-03     |
+      | firstname      | Jane           |
+      | surname        | Doe            |
+      | currentaddress | 123 Test Drive |
+      | dateofbirth    | 1987-03-03     |
 
   Scenario: Sign in and cycle 3
     Given the user is at Test RP
@@ -87,4 +87,38 @@ Feature: User account creation
     And they start a sign in journey
     And they select IDP "Stub Idp Demo One"
     And they login as "stub-idp-demo-one" with a random pid
-    Then user account creation should fail
+    Then should arrive at the user account creation error page
+    When they click on link "Other ways to prove your identity online"
+    Then they should arrive at the Test RP start page with error notice
+
+  @Eidas
+  Scenario: Failed user account creation with eIDAS and retried
+    Given the user is at Test RP
+    And we do not want to match the user
+    And we want to fail account creation
+    And they start an eIDAS journey
+    And they select eIDAS scheme "Stub IDP Demo"
+    Then they should be at IDP "Stub Country"
+    And they login as "stub-country-new"
+    And they submit cycle 3 "AB123456C"
+    Then should arrive at the user account creation error page
+    When they click on link "Other ways to prove your identity online"
+    Then they should arrive at the prove identity page
+    And they choose to use a European identity scheme
+    Then they should arrive at the country picker
+
+  @Eidas
+  Scenario: Failed user account creation with eIDAS and retried with Verify
+    Given the user is at Test RP
+    And we do not want to match the user
+    And we want to fail account creation
+    And they start an eIDAS journey
+    And they select eIDAS scheme "Stub IDP Demo"
+    Then they should be at IDP "Stub Country"
+    And they login as "stub-country-new"
+    And they submit cycle 3 "AB123456C"
+    Then should arrive at the user account creation error page
+    When they click on link "Other ways to prove your identity online"
+    Then they should arrive at the prove identity page
+    And they choose to use Verify
+    Then they should arrive at the Start page

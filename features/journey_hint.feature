@@ -21,7 +21,7 @@ Scenario: Journey hint Registration
     Given the user is at Test RP
     And they select journey hint "Sign-in with eIDAS"
     And they start a journey
-    Then they arrive at the country picker
+    Then they should arrive at the country picker
 
   Scenario: Journey hint Sign-in with eIDAS when Eidas is Disabled
     Given the user is at Test RP
@@ -44,7 +44,7 @@ Scenario: Journey hint Registration
     Given the user is at Test RP
     And they select journey hint "Unspecified"
     And they start a journey
-    Then they arrive at the prove identity page
+    Then they should arrive at the prove identity page
 
   Scenario: Journey hint Unspecified when Eidas is Disabled
     Given the user is at Test RP
@@ -52,4 +52,3 @@ Scenario: Journey hint Registration
     And they select journey hint "Unspecified"
     And they start a journey
     Then they should arrive at the Start page
-

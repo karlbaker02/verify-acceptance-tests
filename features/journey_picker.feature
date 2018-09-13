@@ -17,7 +17,7 @@ Feature: Page to pick between Verify and eIDAS journeys
     Given the user is at Test RP
     When they start a journey
     And they choose to use a European identity scheme
-    Then they arrive at the country picker
+    Then they should arrive at the country picker
 
 
   Scenario: RP without eIDAS enabled doesn't trigger picker
