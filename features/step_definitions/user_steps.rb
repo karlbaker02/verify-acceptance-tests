@@ -55,6 +55,11 @@ Given('they start a journey') do
   click_on('Start')
 end
 
+Given('they select sign in option') do
+  choose('start_form_selection_false')
+  click_on('Continue')
+end
+
 Given('they start a sign in journey') do
   click_on('Start')
   click_on('Use GOV.UK Verify') if see_journey_picker?

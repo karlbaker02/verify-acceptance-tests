@@ -46,6 +46,10 @@ Feature: User authentication failure
     Then they should arrive at the prove identity page
     And they choose to use a European identity scheme
     Then they should arrive at the country picker
+    And they select eIDAS scheme "Stub IDP Demo"
+    Then they should be at IDP "Stub Country"
+    And they login as "stub-country"
+    Then they should be successfully verified
 
 
   @Eidas
@@ -60,6 +64,10 @@ Feature: User authentication failure
     Then they should arrive at the prove identity page
     And they choose to use Verify
     Then they should arrive at the Start page
+    And they select sign in option
+    And they select IDP "Stub Idp Demo One"
+    And they login as "stub-idp-demo-one"
+    Then they should be successfully verified
 
 
   Scenario: IDP returns authn failure requester error when user Signs in
