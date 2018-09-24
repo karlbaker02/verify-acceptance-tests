@@ -26,5 +26,6 @@ staging:
   frontend: https://www.staging.signin.service.gov.uk
   test-rp: https://test-rp-stub-staging.ida.digital.cabinet-office.gov.uk/test-rp
   idps:
+    Stub Country: https://ida-stub-idp-staging.cloudapps.digital/eidas/stub-country/login
     Stub Idp Demo One: https://ida-stub-idp-staging.cloudapps.digital/stub-idp-demo-one/login
     Stub Idp Demo Two: https://ida-stub-idp-staging.cloudapps.digital/stub-idp-demo-two/login
