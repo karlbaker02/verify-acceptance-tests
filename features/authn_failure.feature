@@ -16,8 +16,7 @@ Feature: User authentication failure
     When the IDP returns an Authn Failure response
     Then they should arrive at the Failed registration page
 
-    When they choose to verify with another certified company
-    And they select the link find another company to verify you
+    When they select the link find another company to verify you
     Then they should arrive at the Select documents page
 
 
