@@ -31,3 +31,16 @@ Feature: User simple flows - sign in and registeration
     When they give their consent
     Then they should be successfully verified
 
+  Scenario: User cannot register with a disconnected IDP
+    Given the user is at Test RP
+    And they start a journey
+    And this is their first time using Verify
+    And they are above the age threshold
+    And they have all their documents
+    And they have a smart phone
+    Then they cannot continue to register with disconnected IDP "Stub Idp Demo Three"
+
+  Scenario: User cannot sign in using a disconnected IDP
+    Given the user is at Test RP
+    And they start a sign in journey
+    Then they cannot sign in with IDP "Stub Idp Demo Three"
