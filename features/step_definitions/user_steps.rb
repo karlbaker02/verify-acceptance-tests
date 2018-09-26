@@ -232,10 +232,6 @@ Given('they choose try to verify') do
   click_link('verify-identity-online')
 end
 
-Given('they choose to verify with another certified company') do
-  find('span.summary', text: 'Try verifying with another certified company').click
-end
-
 Given('they select the link find another company to verify you') do
   click_link('Find another company to verify you')
 end
